@@ -20,3 +20,6 @@ class Book(models.Model):
 
     def __str__(self):
         return f"{self.name } > {self.author}"
+    
+class Header(models.Model):
+    image = models.ImageField(upload_to='header', blank=True, null=True)
