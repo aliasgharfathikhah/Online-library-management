@@ -19,6 +19,10 @@
           transform: translate(-50%, -50%);
           font-size: 24px;
         }
+        .headerimag{
+          border-bottom-left-radius: 50px;
+          border-bottom-right-radius: 50px;
+        }
       </style>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -26,32 +30,29 @@
     <title>مدیریت کتابخانه</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="direction: rtl;">
       <a class="navbar-brand" href="/">کتاب بان</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">خانه <span class="sr-only">(current)</span></a>
+          <li class="nav-item" style="margin-left: 20px">
+            <a class="nav-link" href="/users/add">افزودن عضو</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ویژگی‌ها</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">قیمت‌ها</a>
+          <li class="nav-item" style="margin-left: 20px">
+            <a class="nav-link" href="#">افزودن کتاب</a>
           </li>
         </ul>
       </div>
       <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="جستجو" aria-label="جستجو">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">جستجو</button>
+        <input class="form-control mr-sm-2" type="search" placeholder="نام کتاب یا نویسنده..." aria-label="جستجو">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">جستجو🔍</button>
       </form>
     </nav>
 
     <div class="header-image">
-        <img src="{{ header.image.url }}" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="عکس هدر">
+        <img src="{{ header.image.url }}" class="img-fluid w-100 headerimag" style="height: 200px; object-fit: cover;" alt="عکس هدر">
         <div class="centered-text" style="font: bold; font-size: xx-large;">مدیریت کتابخانه</div>
     </div>
 
@@ -60,7 +61,7 @@
       <div class="row">
         {% for book in books %}
             <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100" style="text-align: center;">
+            <div class="card h-100" style="text-align: right;">
                 <img src="{{ book.image.url }}" class="card-img-top" style="height: 300px; "alt="عکس کارت">
                 <div class="card-body">
                 <h4 class="card-title">{{ book.name }}</h4>
