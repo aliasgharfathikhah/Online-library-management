@@ -12,9 +12,13 @@ class AddOrderForm(forms.ModelForm):
         'placeholder': 'کتاب',
         'class': 'form-control'
     }))
-    time = forms.DateField(widget=forms.DateTimeInput(attrs={
-        'placeholder': 'زمان',
-    }))
+    time = forms.DateField(
+        input_formats=['%Y-%m-%d'], 
+        widget=forms.DateInput(attrs={
+            'type': 'date',
+            'class': 'form-control'
+        }, format='%Y-%m-%d')
+    )
     class Meta:
         model = order
         fields = ('user', 'book', 'time')
