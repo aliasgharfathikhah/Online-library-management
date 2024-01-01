@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fa">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>افزودن عضو</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="direction: rtl;">
+      <a class="navbar-brand" href="/">کتاب بان</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav"
+        <li class="nav-item" style="margin-left: 20px">
+          <a class="nav-link" href="#">خانه</a>
+        </li>
+          <li class="nav-item" style="margin-left: 20px">
+            <a class="nav-link" href="#">افزودن کتاب</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+
+      <h1 class="text-center my-4">افزودن کاربر</h1>
+
+      <form action="/order/add" method="post" dir="rtl" style="align-items: center;">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form.user }}
+        </div>
+        <div class="form-group">
+          {{ form.book}}
+        </div>
+        <div>
+          {{ form.time }}
+        </div>
+
+        {% if form.errors or form.non_field_errors %}
+          <div class="mb-3 p-6 bg-red-100 rounded-xl">
+              {% for field in form %}
+                  {% for error in field.errors %}
+                      {{ error }}
+                  {% endfor %}
+              {% endfor %}
+              {{ form.non_field_errors }}
+          </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">ثبت</button>
+      </form>
+    </div>
+
+    <!-- Bootstrap Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true" dir="rtl">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        کتاب با موفقیت ثبت شد!
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Custom Script -->
+<script>
+$(document).ready(function(){
+  $('form').on('submit', function(e){
+    if (this.checkValidity()) {
+      $('#successModal').modal('show');
+    } else {
+      e.preventDefault();
+    }
+  });
+});
+
+</script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
