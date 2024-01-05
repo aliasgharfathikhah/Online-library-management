@@ -42,9 +42,6 @@
               <a class="nav-link" href="/users/add">افزودن عضو</a>
             </li>
             <li class="nav-item" style="margin-left: 20px">
-              <a class="nav-link" href="/users/show">نمایش اعضا</a>
-            </li>
-            <li class="nav-item" style="margin-left: 20px">
               <a class="nav-link" href="/order/add">ثبت سفارش</a>
             </li>
             <li class="nav-item" style="margin-left: 20px">
@@ -70,7 +67,7 @@
         <a class="navbar-brand" style="margin-left: 100px;" href="/">کتاب بان</a>
         
         <form class="form-inline" style="float: left;">
-          <input class="form-control mr-sm-2" type="search" placeholder="نام کتاب یا نویسنده..." aria-label="جستجو">
+          <input class="form-control mr-sm-2" type="search" placeholder="نام کاربر یا شماره موبایل..." aria-label="جستجو">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">جستجو🔍</button>
         </form>
       </nav>
@@ -83,16 +80,16 @@
     <div class="container">
 
       <div class="row">
-        {% for book in books %}
+        {% for user in users %}
             <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100" style="text-align: right;">
-                <img src="{{ book.image.url }}" class="card-img-top" style="height: 300px; "alt="عکس کارت">
+                <!-- <img src="{{ book.image.url }}" class="card-img-top" style="height: 300px; "alt="عکس کارت"> -->
                 <div class="card-body">
-                <h4 class="card-title">{{ book.name }}</h4>
-                <h6 class="card-title">{{ book.author }}</h6>
-                <h6 class="card-title">{{ book.price }}</h6>
-                <h6 class="card-title">{{ book.bookshelf }}</h6>
-                <a href="/order/add" ><button type="button" class="btn btn-primary" >سفارش</button></a>
+                <h4 class="card-title">{{ user.name }} {{ user.last_name }}</h4>
+                <h6 class="card-title">{{ user.phone }}</h6>
+                <h6 class="card-title">{{ user.email }}</h6>
+                <h6 class="card-title">{{ user.nationalid }}</h6>
+                <a href="/order/add" ><button type="button" class="btn btn-primary" >ویرایش / حذف</button></a>
                 </div>
             </div>
             </div>
