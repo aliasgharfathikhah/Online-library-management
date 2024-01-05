@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from users.forms import SignupForm
 from users.models import UserProfile
+from books.models import Header
 
 def Add_User(request):
     if request.method == 'POST':
@@ -18,6 +19,8 @@ def Add_User(request):
 
 def Show_Users(request):
     users = UserProfile.objects.all()
+    header = Header.objects.all().first()
     return render(request, 'html/show_users.html', {
-        'users': users
+        'users': users,
+        'header': header,
     })

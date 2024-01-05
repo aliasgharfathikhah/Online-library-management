@@ -53,7 +53,7 @@
           </ul>
         </div>
         <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="نام کتاب یا نویسنده..." aria-label="جستجو">
+          <input class="form-control mr-sm-2" type="search" placeholder="نام کاربر یا شماره موبایل..." aria-label="جستجو">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">جستجو🔍</button>
         </form>
       </nav>
@@ -61,6 +61,25 @@
       <div class="header-image">
           <img src="{{ header.image.url }}" class="img-fluid w-100 headerimag" style="height: 200px; object-fit: cover;" alt="عکس هدر">
           <div class="centered-text" style="font: bold; font-size: xx-large;">مدیریت کتابخانه</div>
+      </div>
+      <div class="container">
+
+        <div class="row">
+          {% for user in users %}
+              <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100" style="text-align: right;">
+                  <!-- <img src="{{ book.image.url }}" class="card-img-top" style="height: 300px; "alt="عکس کارت"> -->
+                  <div class="card-body">
+                  <h4 class="card-title">{{ user.name }} {{ user.last_name }}</h4>
+                  <h6 class="card-title">{{ user.phone }}</h6>
+                  <h6 class="card-title">{{ user.email }}</h6>
+                  <h6 class="card-title">{{ user.nationalid }}</h6>
+                  <a href="/order/add" ><button type="button" class="btn btn-primary" >ویرایش / حذف</button></a>
+                  </div>
+              </div>
+              </div>
+          {% endfor %}
+        </div>
       </div>
     {% else %}
       <nav class="navbar navbar-expand-lg navbar-light bg-light" style="direction: rtl;">
@@ -74,28 +93,9 @@
 
       <div class="header-image">
           <img src="{{ header.image.url }}" class="img-fluid w-100 headerimag" style="height: 200px; object-fit: cover;" alt="عکس هدر">
-          <div class="centered-text" style="font: bold; font-size: xx-large;">خوش اومدی به این کتابخانه</div>
+          <div class="centered-text" style="font: bold; font-size: xx-large;">صفحه پیدا نشد 404 ¯\_(ツ)_/¯</div>
       </div>
     {% endif %}
-    <div class="container">
-
-      <div class="row">
-        {% for user in users %}
-            <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100" style="text-align: right;">
-                <!-- <img src="{{ book.image.url }}" class="card-img-top" style="height: 300px; "alt="عکس کارت"> -->
-                <div class="card-body">
-                <h4 class="card-title">{{ user.name }} {{ user.last_name }}</h4>
-                <h6 class="card-title">{{ user.phone }}</h6>
-                <h6 class="card-title">{{ user.email }}</h6>
-                <h6 class="card-title">{{ user.nationalid }}</h6>
-                <a href="/order/add" ><button type="button" class="btn btn-primary" >ویرایش / حذف</button></a>
-                </div>
-            </div>
-            </div>
-        {% endfor %}
-      </div>
-    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
